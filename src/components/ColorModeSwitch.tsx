@@ -11,7 +11,7 @@ const ColorModeSwitch = () => {
           toggleColorMode
         } /* use Chakra Build-In toggleColorMode to change the theme color*/
       />
-      <Text>Dark Mode</Text>
+      <Text whiteSpace="nowrap">Dark Mode</Text>
     </HStack>
   );
 };
