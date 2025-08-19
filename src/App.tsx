@@ -25,6 +25,7 @@ function App() {
         {/* to show in which screen layout */}
         <GridItem area="aside" paddingX={5}>
           <GenreList
+            selectedGenre={selectedGenre}
             onSelectGenre={(genre) => {
               setSelectedGenre(genre);
             }}
