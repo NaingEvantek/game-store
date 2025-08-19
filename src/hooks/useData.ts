@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 
 
 export interface FetchResponse<T> {
@@ -8,7 +8,7 @@ export interface FetchResponse<T> {
     results: T[];
   }
 
-const useData=<T>(endpoint:string)=>{
+const useData=<T>(endpoint:string,requestConfig?:AxiosRequestConfig,deps?:any[])=>{
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
     const [isLoading,setLoading]=useState(false);
@@ -18,7 +18,7 @@ const useData=<T>(endpoint:string)=>{
 
       setLoading(true);
       apiClient
-        .get<FetchResponse<T>>(endpoint,{signal: controller.signal}) // {signal : ....} to catch the signal of api request
+        .get<FetchResponse<T>>(endpoint,{signal: controller.signal,...requestConfig}) // {signal : ....} to catch the signal of api request
         .then((res) => {
             setData(res.data.results);
             setLoading(false);
@@ -31,7 +31,7 @@ const useData=<T>(endpoint:string)=>{
         });
 
         return ()=>controller.abort(); // axios always call the api two times , first request need to cancelled to avoid double jobs.
-    }, []); // [] empty depedency
+    },deps? [...deps]:[]); // [] empty depedency
 
     return {data,error,isLoading};
 }
