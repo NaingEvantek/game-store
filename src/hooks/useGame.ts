@@ -5,6 +5,7 @@ import { CanceledError } from "axios";
 export interface Game {
     id: number;
     name: string;
+    background_image:string;
   }
   
 export interface FetchGamesResponse {
@@ -15,7 +16,7 @@ export interface FetchGamesResponse {
 const useGames=()=>{
     const [games, setGames] = useState<Game[]>([]);
     const [error, setError] = useState("");
-  
+   
     useEffect(() => {
       const  controller = new AbortController(); // need to create if you want to control cancelled error.
 
