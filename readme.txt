@@ -17,3 +17,5 @@ Application Layers
    - need to install both to import ms in tsx 
 5) Install zustand (for state management)
    - npm i zustand@4.3.7
+6) Install React Route
+   - npm i react-router-dom@6.10.0
