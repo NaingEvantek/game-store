@@ -15,3 +15,10 @@ Application Layers
    - npm i ms@2.1.3 
    - npm i -D @types/ms
    - need to install both to import ms in tsx 
+4) Install zustand
+   - npm i zustand@4.3.7
+
+
+Notes *
+- Server State : Use React Query insated of React Context. If not , it'll very messy in App.jsx
+- Client State : Use React Context and Local State instead of React Query.
